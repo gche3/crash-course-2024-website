@@ -1,6 +1,7 @@
-import { useSelector } from "react-redux";
-import { selectData } from "../pages/homeSlice";
-import { Link } from "react-scroll";
+// import { useSelector } from "react-redux";
+// import { selectData } from "../pages/homeSlice";
+import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 import styled from "styled-components";
 // Icons
 import { Icon } from "@iconify/react";
@@ -8,9 +9,10 @@ import { Icon } from "@iconify/react";
 import Logo from "../images/logo.svg";
 import { Light, Dark } from "../data";
 // Components
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Button } from "react-bootstrap";
 import { Spin } from "./globalStyledComponents";
 import SocialLinks from "./SocialLinks";
+
 
 const StyledHero = styled.header`
   position: relative;
@@ -80,18 +82,33 @@ const StyledHero = styled.header`
   }
 `;
 
+const buttonStyle = {
+  backgroundColor: 'transparent',
+  color: 'white',
+  border: '2px solid white',
+  borderRadius: '8px',
+  padding: '10px 20px',
+};
+
 export default function Hero() {
-  const { name } = useSelector(selectData);
+  // const { name } = "useSelector(selectData)";
 
   return (
     <StyledHero>
       <Container>
         <Row className="align-items-center text-center">
           <Col>
-            <h1 className="mb-3 display-3 title">{name}</h1>
+            <h1 className="mb-3 display-3 title">{"Grace He"}</h1>
             <div className="d-flex align-items-center justify-content-center">
               <SocialLinks />
             </div>
+            <Container className="text-center mt-5">
+              <Link to="/Summer-2024">
+                <Button style={buttonStyle}>
+                  Summer 2024 Log
+                </Button>
+              </Link>
+            </Container>
           </Col>
           <Col className="d-none d-md-block">
             <img
@@ -103,9 +120,9 @@ export default function Hero() {
         </Row>
         <Row className="align-items-end down-container">
           <Col className="m-4 text-center">
-            <Link to={"About"} className="link-icons">
+            <ScrollLink to={"About"} className="link-icons">
               <Icon icon="fa6-solid:circle-chevron-down" />
-            </Link>
+            </ScrollLink>
           </Col>
         </Row>
       </Container>
